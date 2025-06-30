@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <title>COData - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f3f4f6 0%, #e5e7eb 100%);
+    }
+    .ios-card {
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+    .ios-button {
+      background: rgb(59, 130, 246);
+      transition: all 0.3s ease;
+    }
+    .ios-button:hover {
+      background: rgb(37, 99, 235);
+    }
+    .divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.5rem 0;
+    }
+    .divider::before,
+    .divider::after {
+      content: '';
+      flex: 1;
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .divider span {
+      padding: 0 1rem;
+      color: #6b7280;
+      font-size: 0.875rem;
+    }
+    .input-focus:focus {
+      outline: none;
+      border-color: rgb(59, 130, 246);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 p-4">
+  <div class="w-full max-w-md">
+    <!-- Logo and Title -->
+    <div class="text-center mb-8">
+      <i class="fas fa-city text-5xl text-gray-700 mb-3"></i>
+      <h1 class="text-2xl font-semibold text-gray-800">COData</h1>
+      <p class="text-gray-600">Sistema de Gestión Municipal</p>
+    </div>
+
+    <!-- Login Card -->
+    <div class="ios-card rounded-2xl shadow-lg p-6">
+      <!-- Login Form -->
+      <div class="space-y-4">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Correo Electrónico</label>
+          <input type="email" id="email" autocomplete="email" class="input-focus w-full px-4 py-3 rounded-xl border border-gray-200 bg-white bg-opacity-50" placeholder="usuario@ejemplo.com">
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+          <input type="password" id="password" autocomplete="current-password" class="input-focus w-full px-4 py-3 rounded-xl border border-gray-200 bg-white bg-opacity-50" placeholder="••••••••">
+        </div>
+        
+        <!-- Role Selection -->
+        <div>
+          <label class="block text-sm font-medium text-gray-700 mb-2">Tipo de Usuario</label>
+          <div class="grid grid-cols-2 gap-3">
+            <label class="flex items-center justify-center p-3 rounded-xl border border-gray-200 bg-white bg-opacity-50 cursor-pointer hover:bg-opacity-70 transition-all duration-200">
+              <input type="radio" name="userRole" value="user" class="sr-only" checked>
+              <div class="text-center">
+                <i class="fas fa-user text-blue-600 text-lg mb-1"></i>
+                <div class="text-sm font-medium">Usuario</div>
+              </div>
+            </label>
+            <label class="flex items-center justify-center p-3 rounded-xl border border-gray-200 bg-white bg-opacity-50 cursor-pointer hover:bg-opacity-70 transition-all duration-200">
+              <input type="radio" name="userRole" value="admin" class="sr-only">
+              <div class="text-center">
+                <i class="fas fa-user-shield text-green-600 text-lg mb-1"></i>
+                <div class="text-sm font-medium">Administrador</div>
+              </div>
+            </label>
+          </div>
+        </div>
+        
+        <div class="flex items-center justify-between text-sm">
+          <label class="flex items-center">
+            <input type="checkbox" class="rounded border-gray-300 text-blue-600 focus:ring-blue-200">
+            <span class="ml-2 text-gray-600">Recordarme</span>
+          </label>
+          <a href="#" class="text-blue-600 hover:text-blue-700">¿Olvidaste tu contraseña?</a>
+        </div>
+
+        <!-- Error Message Container -->
+        <div id="login-error" class="text-red-600 text-sm mt-2 hidden"></div>
+        
+        <button id="login-btn" class="ios-button w-full text-white py-3 rounded-xl text-sm font-medium flex items-center justify-center">
+          Iniciar Sesión <i class="fas fa-arrow-right ml-2"></i>
+        </button>
+
+        <!-- Social Login Divider -->
+        <div class="divider">
+          <span>O continuar con</span>
+        </div>
+
+        <!-- Social Login Buttons -->
+        <div class="space-y-3">
+          <!-- WhatsApp Login -->
+          <button class="w-full bg-[#25D366] text-white py-3 rounded-xl transition-colors duration-200 hover:bg-[#22c55e] flex items-center justify-center space-x-2">
+            <i class="fab fa-whatsapp"></i>
+            <span>Continuar con WhatsApp</span>
+          </button>
+          
+          <!-- Google Login -->
+          <button class="w-full bg-white text-gray-700 py-3 rounded-xl transition-colors duration-200 hover:bg-gray-50 border border-gray-200 flex items-center justify-center space-x-2">
+            <i class="fab fa-google text-[#4285F4]"></i>
+            <span>Continuar con Google</span>
+          </button>
+          
+          <!-- Facebook Login -->
+          <button class="w-full bg-[#1877F2] text-white py-3 rounded-xl transition-colors duration-200 hover:bg-[#1666d1] flex items-center justify-center space-x-2">
+            <i class="fab fa-facebook-f"></i>
+            <span>Continuar con Facebook</span>
+          </button>
+        <p class="text-center text-sm text-gray-600 mt-4">
+          ¿No tienes una cuenta? <a href="#" class="text-blue-600 hover:text-blue-700">Regístrate</a>
+        </p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="text-center mt-6 text-sm text-gray-600">
+      <p>&copy; 2024 COData. Todos los derechos reservados.</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const loginBtn = document.getElementById('login-btn');
+      const errorDiv = document.getElementById('login-error');
+      const emailInput = document.getElementById('email');
+      const passwordInput = document.getElementById('password');
+      const roleInputs = document.querySelectorAll('input[name="userRole"]');
+      const roleLabels = document.querySelectorAll('label:has(input[name="userRole"])');
+
+      // Handle role selection visual feedback
+      roleInputs.forEach((input, index) => {
+        input.addEventListener('change', () => {
+          roleLabels.forEach(label => {
+            label.classList.remove('border-blue-500', 'bg-blue-50');
+            label.classList.add('border-gray-200');
+          });
+          if (input.checked) {
+            roleLabels[index].classList.remove('border-gray-200');
+            roleLabels[index].classList.add('border-blue-500', 'bg-blue-50');
+          }
+        });
+      });
+
+      // Set initial selection
+      const checkedRole = document.querySelector('input[name="userRole"]:checked');
+      if (checkedRole) {
+        const index = Array.from(roleInputs).indexOf(checkedRole);
+        roleLabels[index].classList.remove('border-gray-200');
+        roleLabels[index].classList.add('border-blue-500', 'bg-blue-50');
+      }
+
+      // Handle login button click
+      loginBtn.addEventListener('click', () => {
+        errorDiv.classList.add('hidden');
+        errorDiv.innerText = '';
+
+        const email = emailInput.value.trim();
+        const password = passwordInput.value.trim();
+        const selectedRole = document.querySelector('input[name="userRole"]:checked').value;
+
+        // Basic validation: check if fields are empty
+        if (!email || !password) {
+          errorDiv.innerText = 'Por favor, completa ambos campos.';
+          errorDiv.classList.remove('hidden');
+          return;
+        }
+
+        // Role-based credentials verification
+        let isValidLogin = false;
+        let userRole = '';
+
+        if (selectedRole === 'admin') {
+          // Admin credentials
+          if (email === 'admin@cdata.com' && password === 'admin123') {
+            isValidLogin = true;
+            userRole = 'admin';
+          }
+        } else {
+          // User credentials
+          if (email === 'usuario@cdata.com' && password === 'user123') {
+            isValidLogin = true;
+            userRole = 'user';
+          }
+        }
+
+        if (isValidLogin) {
+          try {
+            localStorage.setItem('isAuthenticated', 'true');
+            localStorage.setItem('userRole', userRole);
+            localStorage.setItem('userEmail', email);
+            window.location.href = 'index.html';
+          } catch (err) {
+            console.error('No se pudo acceder a localStorage:', err);
+            errorDiv.innerText = 'Error al iniciar sesión. Por favor, intenta nuevamente.';
+            errorDiv.classList.remove('hidden');
+          }
+        } else {
+          let errorMessage = 'Credenciales inválidas. ';
+          if (selectedRole === 'admin') {
+            errorMessage += 'Para administrador use: admin@cdata.com / admin123';
+          } else {
+            errorMessage += 'Para usuario use: usuario@cdata.com / user123';
+          }
+          errorDiv.innerText = errorMessage;
+          errorDiv.classList.remove('hidden');
+          // Clear password field on invalid login
+          passwordInput.value = '';
+        }
+      });
+
+      // Handle Enter key press
+      const handleEnterKey = (e) => {
+        if (e.key === 'Enter') {
+          loginBtn.click();
+        }
+      };
+
+      // Add Enter key listeners to inputs
+      emailInput.addEventListener('keypress', handleEnterKey);
+      passwordInput.addEventListener('keypress', handleEnterKey);
+
+      // Clear error message when user starts typing
+      emailInput.addEventListener('input', () => {
+        errorDiv.classList.add('hidden');
+      });
+      
+      passwordInput.addEventListener('input', () => {
+        errorDiv.classList.add('hidden');
+      });
+
+      // Clear error message when role changes
+      roleInputs.forEach(input => {
+        input.addEventListener('change', () => {
+          errorDiv.classList.add('hidden');
+        });
+      });
+    });
+  </script>
+</body>
+</html>
